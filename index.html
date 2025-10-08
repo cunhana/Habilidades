@@ -1,0 +1,856 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilidades Sociales - Guía Interactiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --secondary: #8BC34A;
+            --accent: #FF9800;
+            --light: #F1F8E9;
+            --dark: #333;
+            --success: #4CAF50;
+            --info: #2196F3;
+            --warning: #FF9800;
+            --danger: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--light) 0%, #E8F5E9 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: url('https://placehold.co/1200x400/E8F5E9/4CAF50?text=Habilidades+Sociales') center/cover;
+            color: white;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(76, 175, 80, 0.85);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 i {
+            background: var(--secondary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pillar {
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .pillar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .zones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .zone {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid var(--secondary);
+        }
+
+        .zone h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .emotional-intelligence {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ei-card {
+            background: linear-gradient(135deg, #BBDEFB, #E3F2FD);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--info);
+        }
+
+        .ei-card h3 {
+            color: var(--info);
+            margin-bottom: 1rem;
+        }
+
+        .training-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .method {
+            background: linear-gradient(135deg, #FFE0B2, #FFCC80);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .method i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .method h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Elements */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            animation: slideIn 0.5s ease;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--danger);
+        }
+
+        .active-listening {
+            background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .do-dont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .do-list, .dont-list {
+            padding: 1.5rem;
+            border-radius: 15px;
+        }
+
+        .do-list {
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid var(--success);
+        }
+
+        .dont-list {
+            background: rgba(244, 67, 54, 0.1);
+            border: 2px solid var(--danger);
+        }
+
+        .do-list h3, .dont-list h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .do-list h3 i {
+            color: var(--success);
+        }
+
+        .dont-list h3 i {
+            color: var(--danger);
+        }
+
+        .checklist li, .do-list li, .dont-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .checklist li::before, .do-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .dont-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .summary-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .summary-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .do-dont {
+                grid-template-columns: 1fr;
+            }
+            
+            .pillars, .emotional-intelligence, .training-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Burger Menu for Mobile */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-handshake"></i>
+                <h1>Habilidades Sociales</h1>
+            </div>
+            <div class="burger-menu" id="burgerMenu">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#que-son">¿Qué son?</a></li>
+                    <li><a href="#pilares">3 Pilares</a></li>
+                    <li><a href="#inteligencia">Inteligencia Emocional</a></li>
+                    <li><a href="#entrenar">Entrenar</a></li>
+                    <li><a href="#escucha">Escucha Activa</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>¡Domina el Arte de Relacionarte!</h2>
+            <p>Aprende las habilidades sociales que transformarán tu vida personal y profesional</p>
+            <button class="btn" onclick="showPopup('intro')">Comenzar Aprendizaje</button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- ¿Qué son las habilidades sociales? -->
+        <section id="que-son" class="section">
+            <h2><i class="fas fa-question-circle"></i> ¿Qué son las Habilidades Sociales?</h2>
+            <p>Son como herramientas que usamos para relacionarnos con otras personas. No nacemos sabiéndolas, sino que las aprendemos a lo largo de la vida, igual que aprendemos a montar en bici.</p>
+            
+            <h3>Características clave:</h3>
+            <ul class="checklist">
+                <li><strong>Son conductas aprendidas:</strong> Se pueden desarrollar y mejorar con práctica.</li>
+                <li><strong>Dependen del contexto:</strong> Lo que es correcto en un parque (gritar y correr) no lo es en una biblioteca.</li>
+                <li><strong>Tienen un objetivo:</strong> Conseguir lo que queremos sin dañar a los demás, sentirnos bien y hacer que los demás se sientan bien.</li>
+            </ul>
+            
+            <div style="margin-top: 1.5rem; padding: 1.5rem; background: #E8F5E9; border-radius: 15px; border-left: 4px solid var(--primary);">
+                <strong>Ejemplo práctico:</strong> Cecilia, la técnica del caso práctico, al principio usaba estas habilidades sin darse cuenta. Pero cuando las estudió, aprendió a usarlas mejor y su trabajo y sus relaciones mejoraron mucho.
+            </div>
+        </section>
+
+        <!-- Los Tres Pilares de la Comunicación -->
+        <section id="pilares" class="section">
+            <h2><i class="fas fa-columns"></i> Los Tres Pilares de la Comunicación</h2>
+            
+            <div class="pillars">
+                <div class="pillar">
+                    <h3><i class="fas fa-comment"></i> Comunicación Verbal</h3>
+                    <ul>
+                        <li><strong>Las palabras:</strong> Usar un lenguaje claro y respetuoso</li>
+                        <li><strong>La conversación:</strong> Saber iniciarla, mantenerla y cerrarla adecuadamente</li>
+                        <li><strong>Hacer preguntas:</strong> Para mostrar interés (¿Qué tal tu día?)</li>
+                        <li><strong>Parafrasear:</strong> Repetir con tus palabras lo que te han dicho</li>
+                    </ul>
+                </div>
+                
+                <div class="pillar">
+                    <h3><i class="fas fa-user"></i> Comunicación No Verbal</h3>
+                    <p>¡Representa más del 90% del mensaje!</p>
+                    <ul>
+                        <li><strong>La mirada:</strong> Mirar a los ojos muestra interés y sinceridad</li>
+                        <li><strong>La expresión facial:</strong> Una sonrisa sincera abre puertas</li>
+                        <li><strong>La postura:</strong> Estar recto transmite seguridad</li>
+                        <li><strong>Los gestos:</strong> Las manos ayudan a explicar cosas</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 1rem;">Zonas de Distancia Personal:</h4>
+                    <div class="zones">
+                        <div class="zone">
+                            <h4>Íntima (0-45 cm)</h4>
+                            <p>Familia y amigos cercanos</p>
+                        </div>
+                        <div class="zone">
+                            <h4>Personal (45-120 cm)</h4>
+                            <p>Amigos y compañeros</p>
+                        </div>
+                        <div class="zone">
+                            <h4>Social (1.2-3.65 m)</h4>
+                            <p>Desconocidos y formales</p>
+                        </div>
+                        <div class="zone">
+                            <h4>Pública (+3.65 m)</h4>
+                            <p>Discursos y presentaciones</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pillar">
+                    <h3><i class="fas fa-music"></i> Componentes Paralingüísticos</h3>
+                    <p>La "música" de nuestra voz:</p>
+                    <ul>
+                        <li><strong>Volumen:</strong> Ni muy bajo ni muy alto</li>
+                        <li><strong>Tono:</strong> Variar para transmitir emociones</li>
+                        <li><strong>Velocidad:</strong> Ritmo adecuado para ser entendido</li>
+                        <li><strong>Fluidez:</strong> Evitar muletillas ("eeeeh...")</li>
+                        <li><strong>Latencia:</strong> Tiempo adecuado antes de responder</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inteligencia Emocional -->
+        <section id="inteligencia" class="section">
+            <h2><i class="fas fa-brain"></i> Inteligencia Emocional: El Motor de las Habilidades Sociales</h2>
+            <p>Es la capacidad de entender y manejar nuestras emociones y las de los demás.</p>
+            
+            <div class="emotional-intelligence">
+                <div class="ei-card">
+                    <h3>Aptitud Personal (Gestionarme a mí mismo)</h3>
+                    <ul>
+                        <li><strong>Autoconocimiento:</strong> Saber qué estoy sintiendo</li>
+                        <li><strong>Autocontrol:</strong> No dejarme llevar por emociones negativas</li>
+                        <li><strong>Motivación:</strong> Usar emociones para proponerme metas</li>
+                    </ul>
+                </div>
+                
+                <div class="ei-card">
+                    <h3>Aptitud Social (Gestionarme con los demás)</h3>
+                    <ul>
+                        <li><strong>Empatía:</strong> Ponerme en el lugar del otro</li>
+                        <li><strong>Habilidades Sociales:</strong> Aplicar todo lo aprendido</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #FFF3E0; border-radius: 15px; border-left: 4px solid var(--accent);">
+                <h3>Diferencia clave:</h3>
+                <p><strong>Emoción:</strong> Es intensa y breve, como un fuego artificial (ej.: un susto).</p>
+                <p><strong>Sentimiento:</strong> Es más suave pero duradero, como la corriente de un río (ej.: la tristeza por haber suspendido un examen).</p>
+            </div>
+        </section>
+
+        <!-- Obstáculos y Cómo Evitarlos -->
+        <section class="section">
+            <h2><i class="fas fa-exclamation-triangle"></i> Obstáculos y Cómo Evitarlos</h2>
+            
+            <h3>Barreras de la Comunicación:</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                <div style="background: #E3F2FD; padding: 1rem; border-radius: 10px;">
+                    <strong>Físicas:</strong> Ruido, frío, calor
+                </div>
+                <div style="background: #E3F2FD; padding: 1rem; border-radius: 10px;">
+                    <strong>Psicológicas:</strong> Prejuicios, distracción
+                </div>
+                <div style="background: #E3F2FD; padding: 1rem; border-radius: 10px;">
+                    <strong>Semánticas:</strong> Tecnicismos, palabras desconocidas
+                </div>
+                <div style="background: #E3F2FD; padding: 1rem; border-radius: 10px;">
+                    <strong>Socioculturales:</strong> Diferencias culturales
+                </div>
+            </div>
+            
+            <h3>Mecanismos de Defensa Poco Sanos:</h3>
+            <ul class="checklist">
+                <li><strong>Negación:</strong> Hacer como si un problema no existiera</li>
+                <li><strong>Proyección:</strong> Echar la culpa a otros de algo que es nuestro</li>
+                <li><strong>Racionalización:</strong> Inventar excusas que suenen lógicas</li>
+            </ul>
+            
+            <h3>En su lugar, usa mecanismos de adaptación:</h3>
+            <ul class="checklist">
+                <li><strong>Afiliación:</strong> Buscar apoyo en amigos o familia</li>
+                <li><strong>Sentido del Humor:</strong> Reírse de uno mismo o de la situación</li>
+                <li><strong>Anticipación:</strong> Pensar con calma en soluciones</li>
+            </ul>
+        </section>
+
+        <!-- Cómo Entrenar tus Habilidades Sociales -->
+        <section id="entrenar" class="section">
+            <h2><i class="fas fa-dumbbell"></i> Cómo Entrenar tus Habilidades Sociales</h2>
+            <p>¡Se pueden entrenar! Aquí tienes métodos efectivos:</p>
+            
+            <div class="training-methods">
+                <div class="method">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Instrucciones</h3>
+                    <p>Que alguien te explique claramente cómo hacer una conducta</p>
+                </div>
+                <div class="method">
+                    <i class="fas fa-eye"></i>
+                    <h3>Modelado</h3>
+                    <p>Ver a alguien hacerlo bien (vídeos, ejemplos)</p>
+                </div>
+                <div class="method">
+                    <i class="fas fa-theater-masks"></i>
+                    <h3>Ensayo Conductual</h3>
+                    <p>Practicar con role-playing como en una obra de teatro</p>
+                </div>
+                <div class="method">
+                    <i class="fas fa-comments"></i>
+                    <h3>Retroalimentación</h3>
+                    <p>Recibir feedback constructivo después del ensayo</p>
+                </div>
+                <div class="method">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Reforzamiento</h3>
+                    <p>Premiarte cuando lo hagas bien para fortalecer la conducta</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- La Escucha Activa -->
+        <section id="escucha" class="section">
+            <h2><i class="fas fa-headphones"></i> El Super-Poder: La Escucha Activa</h2>
+            <p>No es solo "oir", es escuchar de verdad. Es la habilidad social más importante.</p>
+            
+            <div class="active-listening">
+                <h3>¿Cómo se hace?</h3>
+                <div class="do-dont">
+                    <div class="do-list">
+                        <h3><i class="fas fa-check-circle"></i> Qué HACER</h3>
+                        <ul>
+                            <li>Mirar a la persona</li>
+                            <li>Asentir con la cabeza</li>
+                            <li>No interrumpir</li>
+                            <li>Parafrasear lo entendido</li>
+                            <li>Hacer preguntas para saber más</li>
+                        </ul>
+                    </div>
+                    <div class="dont-list">
+                        <h3><i class="fas fa-times-circle"></i> Qué NO HACER</h3>
+                        <ul>
+                            <li>El paternalismo (dar consejos sin pedir)</li>
+                            <li>La lectura del pensamiento</li>
+                            <li>Preparar tu respuesta mientras hablan</li>
+                            <li>Interrumpir constantemente</li>
+                            <li>Mostrar desinterés con el lenguaje corporal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resumen Final -->
+        <section class="section">
+            <h2><i class="fas fa-book"></i> Resumen Final: El Manual del Buen Comunicador</h2>
+            <div class="summary">
+                <div class="summary-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>PIENSA</h3>
+                    <p>Conoce tus emociones y controla tus impulsos</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-eye"></i>
+                    <h3>OBSERVA</h3>
+                    <p>Fíjate en tu lenguaje corporal y el de los demás</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-volume-up"></i>
+                    <h3>MODULA</h3>
+                    <p>Cuida el volumen, velocidad y tono de tu voz</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-ear-listen"></i>
+                    <h3>ESCUCHA</h3>
+                    <p>Practica la escucha activa verdaderamente</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>SÉ ASERTIVO</h3>
+                    <p>Di lo que piensas con respeto y firmeza</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-running"></i>
+                    <h3>PRACTICA</h3>
+                    <p>Usa role-playing y pide feedback constantemente</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Popup Modal -->
+    <div class="popup" id="popupModal">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <h2 id="popupTitle">¡Bienvenido al Aprendizaje!</h2>
+            <p id="popupContent">Las habilidades sociales son fundamentales para el éxito en todas las áreas de la vida. Este recurso interactivo te guiará paso a paso para desarrollar estas competencias esenciales.</p>
+            <p style="margin-top: 1rem; font-weight: 600; color: var(--primary);">¡Comencemos esta transformación juntos!</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>¡Transforma tus relaciones con estas habilidades!</h3>
+            <p>Recuerda: Las habilidades sociales son como un músculo - cuanto más las entrenas, más fuertes se vuelven.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navMenu = document.getElementById('navMenu');
+        
+        burgerMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                navMenu.classList.remove('show');
+            });
+        });
+
+        // Popup functionality
+        function showPopup(type) {
+            const popup = document.getElementById('popupModal');
+            const title = document.getElementById('popupTitle');
+            const content = document.getElementById('popupContent');
+            
+            if (type === 'intro') {
+                title.textContent = '¡Bienvenido al Aprendizaje!';
+                content.innerHTML = 'Las habilidades sociales son fundamentales para el éxito en todas las áreas de la vida. Este recurso interactivo te guiará paso a paso para desarrollar estas competencias esenciales.<br><br><strong>¡Comencemos esta transformación juntos!</strong>';
+            }
+            
+            popup.style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popupModal').style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        window.addEventListener('click', (e) => {
+            const popup = document.getElementById('popupModal');
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+
+        // Add scroll animation to sections
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
+```

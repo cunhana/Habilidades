@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilidades Sociales y Comunicación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #E8F4F8 0%, #FDEEF4 100%);
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #E8F4F8 0%, #C8F0DC 100%);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #2c5f7a;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #4a7c8f;
+            font-style: italic;
+        }
+
+        /* Main Layout */
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            background: white;
+            padding: 2rem 1rem;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 140px;
+            height: fit-content;
+            max-height: calc(100vh - 160px);
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            color: #2c5f7a;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #C8F0DC;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-menu button {
+            width: 100%;
+            text-align: left;
+            padding: 1rem;
+            background: #FDEEF4;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #333333;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu button:hover {
+            background: #FFD6E8;
+            border-color: #ff9ec4;
+            transform: translateX(5px);
+        }
+
+        .nav-menu button.active {
+            background: linear-gradient(135deg, #C8F0DC 0%, #E8F4F8 100%);
+            border-color: #2c5f7a;
+            color: #2c5f7a;
+            font-weight: 600;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #C8F0DC;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 1.5rem;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+            margin: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+
+        .section-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-content h2 {
+            color: #2c5f7a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 4px solid #C8F0DC;
+        }
+
+        .section-content h3 {
+            color: #4a7c8f;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .section-content ul, .section-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 5px solid;
+        }
+
+        .info-box.blue {
+            background: #E8F4F8;
+            border-color: #2c5f7a;
+        }
+
+        .info-box.pink {
+            background: #FFD6E8;
+            border-color: #d946a0;
+        }
+
+        .info-box.green {
+            background: #C8F0DC;
+            border-color: #2d9964;
+        }
+
+        .info-box.yellow {
+            background: #FFF9C4;
+            border-color: #d4a817;
+        }
+
+        .info-box strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c5f7a;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #FFF9C4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        /* Emoji Icons */
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c5f7a 0%, #4a7c8f 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .main-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                max-height: 100vh;
+                z-index: 999;
+                transition: left 0.3s ease;
+                padding-top: 4rem;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .section-content h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 1.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .section-content h2 {
+                font-size: 1.4rem;
+            }
+
+            .section-content p,
+            .section-content li {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Overlay for mobile menu */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Close button for mobile */
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #2c5f7a;
+            display: none;
+        }
+
+        @media (max-width: 968px) {
+            .close-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🌟 Habilidades Sociales y Comunicación 🌟</h1>
+            <p>Aprende a comunicarte efectivamente y desarrolla tus habilidades sociales</p>
+        </header>
+
+        <!-- Main Content Wrapper -->
+        <div class="main-wrapper">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar" id="sidebar">
+                <button class="close-menu" onclick="toggleMenu()">✕</button>
+                <h3>📚 Índice de Contenidos</h3>
+                <ul class="nav-menu">
+                    <li><button onclick="showSection('introduccion')" class="active">Introducción - Caso de Cecilia</button></li>
+                    <li><button onclick="showSection('que-son')">¿Qué son las Habilidades Sociales?</button></li>
+                    <li><button onclick="showSection('conceptos')">Conceptos Relacionados</button></li>
+                    <li><button onclick="showSection('comunicacion')">El Proceso de Comunicación</button></li>
+                    <li><button onclick="showSection('verbal-no-verbal')">Comunicación Verbal vs No Verbal</button></li>
+                    <li><button onclick="showSection('elementos-no-verbales')">Elementos No Verbales</button></li>
+                    <li><button onclick="showSection('comunicacion-verbal')">La Comunicación Verbal</button></li>
+                    <li><button onclick="showSection('paralinguistico')">Componentes Paralingüísticos</button></li>
+                    <li><button onclick="showSection('escucha-activa')">Escucha Activa</button></li>
+                    <li><button onclick="showSection('barreras')">Barreras en la Comunicación</button></li>
+                    <li><button onclick="showSection('inteligencia-emocional')">Inteligencia Emocional</button></li>
+                    <li><button onclick="showSection('tecnicas')">Técnicas de Entrenamiento</button></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content">
+                <!-- Introducción -->
+                <div id="introduccion" class="section-content active">
+                    <h2>👩‍🏫 Introducción - Caso Práctico de Cecilia</h2>
+                    <div class="info-box blue">
+                        <strong>📖 Historia de Cecilia</strong>
+                        <p>Cecilia es una Técnico Superior que acaba de terminar sus estudios y se enfrenta por primera vez al mundo laboral en una escuela infantil.</p>
+                    </div>
+                    <p>Utilizó sus conocimientos sobre habilidades sociales y comunicación durante su entrevista de trabajo y ahora debe aplicarlos en su nuevo trabajo:</p>
+                    <ul>
+                        <li><strong>Reuniones con las familias</strong> - Comunicación efectiva con padres y tutores</li>
+                        <li><strong>Trabajo en equipo</strong> - Colaboración con otros profesionales</li>
+                        <li><strong>Relación con niños y niñas</strong> - Interacción educativa diaria</li>
+                    </ul>
+                    <div class="info-box green">
+                        <strong>💡 Lección Principal</strong>
+                        <p>Las habilidades sociales y la comunicación serán fundamentales durante todo su desempeño profesional, marcando la pauta de sus relaciones laborales.</p>
+                    </div>
+                </div>
+
+                <!-- ¿Qué son las Habilidades Sociales? -->
+                <div id="que-son" class="section-content">
+                    <h2>🤝 ¿Qué son las Habilidades Sociales?</h2>
+                    <p>Desde que nacemos, relacionarnos con otras personas es esencial para sobrevivir y desarrollarnos como individuos.</p>
+                    
+                    <div class="info-box blue">
+                        <strong>📌 Definición</strong>
+                        <p>Las habilidades sociales son un conjunto de conductas que facilitan las relaciones interpersonales y que se aprenden a lo largo de la vida, tanto por desarrollo natural como mediante estrategias de aprendizaje.</p>
+                    </div>
+
+                    <h3>⚠️ Consecuencias de la falta de habilidades sociales</h3>
+                    <ul>
+                        <li>Dificultades en las relaciones con otras personas</li>
+                        <li>Efectos negativos sobre la autoestima</li>
+                        <li>Situaciones de estrés</li>
+                        <li>Trastornos por ansiedad y depresión</li>
+                    </ul>
+
+                    <h3>✨ Cuatro características básicas de las habilidades sociales</h3>
+                    <div class="info-box green">
+                        <ol>
+                            <li><strong>Carácter aprendido</strong> - No son innatas, se aprenden</li>
+                            <li><strong>Complementariedad</strong> - Requieren entender el punto de vista del otro</li>
+                            <li><strong>Situación específica</strong> - Se usan según el contexto social específico</li>
+                            <li><strong>Eficiencia interpersonal</strong> - Equivalen a eficiencia en el comportamiento con otras personas</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Conceptos Relacionados -->
+                <div id="conceptos" class="section-content">
+                    <h2>📚 Conceptos Relacionados</h2>
+                    
+                    <h3>🔄 Comportamiento Adaptativo</h3>
+                    <p>Son las habilidades que una persona requiere para relacionarse acertadamente en su entorno:</p>
+                    <ul>
+                        <li>Habilidades básicas de autonomía personal</li>
+                        <li>Habilidades instrumentales básicas</li>
+                        <li>Habilidades interpersonales y sociales</li>
+                        <li>Habilidades ocupacionales o laborales</li>
+                    </ul>
+
+                    <h3>🎯 Competencia Social</h3>
+                    <p>Es la capacidad de adecuar el comportamiento social a una situación determinada. Tiene tres categorías:</p>
+                    <div class="info-box blue">
+                        <ul>
+                            <li><strong>Competencia socio-afectiva:</strong> capacidad para establecer vínculos afectivos</li>
+                            <li><strong>Competencia socio-cognitiva:</strong> conocimiento y razonamiento</li>
+                            <li><strong>Conducta social:</strong> capacidad de cooperar y manejar conflictos</li>
+                        </ul>
+                    </div>
+
+                    <h3>⭐ Asertividad (concepto más importante)</h3>
+                    <div class="info-box pink">
+                        <strong>Definición</strong>
+                        <p>Conducta interpersonal que implica la expresión directa de los propios sentimientos y la defensa de los derechos personales sin negar los derechos ajenos.</p>
+                    </div>
+
+                    <h3>🪞 Autoconcepto y Autoestima</h3>
+                    <ul>
+                        <li><strong>Autoconcepto:</strong> conjunto de conocimientos y percepciones que una persona tiene de sí misma</li>
+                        <li><strong>Autoestima:</strong> valoración positiva o negativa que hacemos sobre nosotros mismos</li>
+                    </ul>
+                </div>
+
+                <!-- Comunicación -->
+                <div id="comunicacion" class="section-content">
+                    <h2>💬 El Proceso de Comunicación</h2>
+                    
+                    <h3>¿Qué es la Comunicación?</h3>
+                    <div class="info-box blue">
+                        <p>Todo proceso social de producción de formas simbólicas. No es lineal, se produce una retroalimentación constante.</p>
+                    </div>
+
+                    <h3>🔍 Diferencia entre Información y Comunicación</h3>
+                    <ul>
+                        <li><strong>Información:</strong> recorrido lineal (emisor → receptor)</li>
+                        <li><strong>Comunicación:</strong> requiere retroalimentación bidireccional</li>
+                    </ul>
+
+                    <h3>🎯 Factores Clásicos del Proceso Comunicativo</h3>
+                    <div class="info-box green">
+                        <ol>
+                            <li><strong>Emisor:</strong> elemento que transmite el mensaje</li>
+                            <li><strong>Codificador:</strong> transmite el mensaje mediante signos simbólicos</li>
+                            <li><strong>Mensaje:</strong> contenido de la información</li>
+                            <li><strong>Canal:</strong> medio a través del cual se transmite</li>
+                            <li><strong>Descodificador:</strong> el receptor interpreta el mensaje</li>
+                            <li><strong>Receptor:</strong> elemento que recibe el mensaje</li>
+                            <li><strong>Retroalimentación (Feedback):</strong> fenómeno bidireccional donde alternadamente receptor y emisor cambian roles</li>
+                        </ol>
+                    </div>
+
+                    <div class="info-box yellow">
+                        <strong>⚡ Importante</strong>
+                        <p>En la comunicación presencial, los elementos verbales y no verbales ocurren de forma simultánea.</p>
+                    </div>
+                </div>
+
+                <!-- Verbal vs No Verbal -->
+                <div id="verbal-no-verbal" class="section-content">
+                    <h2>🗣️ Comunicación Verbal vs No Verbal</h2>
+                    
+                    <h3>📢 Comunicación Verbal</h3>
+                    <div class="info-box blue">
+                        <ul>
+                            <li>Se sirve del lenguaje verbal</li>
+                            <li>Proceso complejo influido por experiencia, cultura y familia</li>
+                            <li>Requiere conocer vocabulario y sintaxis</li>
+                            <li>Siempre puede haber pérdida de información</li>
+                        </ul>
+                    </div>
+
+                    <h3>🎭 Comunicación No Verbal</h3>
+                    <div class="info-box pink">
+                        <ul>
+                            <li>Ya antes de iniciar el contacto verbal indicamos que vamos a comenzar mediante elementos no verbales</li>
+                            <li>Los signos se emiten y captan a gran velocidad, mayormente inconscientes</li>
+                            <li>Interpretación más subjetiva</li>
+                            <li>Cuando hay discrepancia entre verbal y no verbal, creemos más la no verbal</li>
+                            <li>Casi todas las personas expertas cifran en torno al <span class="highlight">90% el peso de la no verbal</span></li>
+                            <li>Se transmite incluso cuando no se transmite (en los silencios)</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box green">
+                        <strong>💡 Conclusión clave</strong>
+                        <p>El "cómo decir" es tan importante o más que el "qué decir".</p>
+                    </div>
+                </div>
+
+                <!-- Elementos No Verbales -->
+                <div id="elementos-no-verbales" class="section-content">
+                    <h2>👁️ Elementos No Verbales</h2>
+                    
+                    <h3>👀 Los Ojos y la Mirada</h3>
+                    <p>La mirada es el elemento conductual fundamental más estudiado. <strong>Funciones:</strong></p>
+                    <ul>
+                        <li>Regular y manejar los turnos de palabra</li>
+                        <li>Abrir y cerrar canales de comunicación</li>
+                        <li>Sincronizar</li>
+                        <li>Si la persona que escucha mira más, produce más respuesta</li>
+                        <li>Si mira más la persona que habla, se le percibe como más persuasiva</li>
+                    </ul>
+
+                    <div class="info-box blue">
+                        <strong>🔍 Dilatación Pupilar</strong>
+                        <ul>
+                            <li><strong>Pupilas dilatadas:</strong> cuando observamos algo de interés</li>
+                            <li><strong>Pupilas contraídas:</strong> cuando algo nos genera rechazo</li>
+                        </ul>
+                    </div>
+
+                    <h3>😊 La Expresión Facial</h3>
+                    <p>Es el principal sistema para expresar emociones. <strong>Emociones que expresa:</strong></p>
+                    <div class="info-box pink">
+                        <p>Alegría, Sorpresa, Tristeza, Miedo, Ira, Desprecio</p>
+                    </div>
+
+                    <h3>📏 Distancia Corporal - Cuatro Zonas</h3>
+                    <div class="info-box green">
+                        <ol>
+                            <li><strong>Zona íntima (0-45 cm):</strong> relaciones íntimas, contacto corporal fácil</li>
+                            <li><strong>Zona personal (45 cm - 1,20 m):</strong> relaciones cercanas, se puede tocar</li>
+                            <li><strong>Zona social (1,20 - 3,65 m):</strong> relaciones impersonales, mayor volumen de voz</li>
+                            <li><strong>Zona pública (más de 3,65 m):</strong> actos formales e interacción pública</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Comunicación Verbal -->
+                <div id="comunicacion-verbal" class="section-content">
+                    <h2>🗣️ La Comunicación Verbal</h2>
+                    
+                    <h3>El Habla</h3>
+                    <p>El habla es el componente verbal más importante en la comunicación. El manejo solvente del lenguaje es una gran ventaja en el desarrollo de las habilidades sociales.</p>
+
+                    <h3>📝 Clases de Expresiones según el Contenido</h3>
+                    <div class="info-box blue">
+                        <ol>
+                            <li><strong>Habla egocéntrica</strong> - dirigida a uno mismo</li>
+                            <li><strong>Instrucciones</strong> - exigencias u órdenes</li>
+                            <li><strong>Preguntas</strong> - para influir y provocar respuestas</li>
+                            <li><strong>Comentarios y sugerencias</strong></li>
+                            <li><strong>Charla informal</strong> - bromas y charla ocasional</li>
+                            <li><strong>Expresiones ejecutivas</strong> - promesas, disculpas, poner nombre</li>
+                            <li><strong>Costumbres sociales</strong> - saludos, despedidas, gracias</li>
+                            <li><strong>Expresión de estados emocionales</strong></li>
+                            <li><strong>Mensajes latentes</strong> - frase con mensaje implícito</li>
+                        </ol>
+                    </div>
+
+                    <h3>💬 La Conversación</h3>
+                    <p>Es el marco en el que se producen la mayoría de interacciones sociales. Se desarrolla a través del lenguaje.</p>
+
+                    <h3>🔄 Retroalimentación en la Conversación</h3>
+                    <div class="info-box yellow">
+                        <p><strong>Problemas comunes:</strong></p>
+                        <ul>
+                            <li>Dar poca retroalimentación y no hacer preguntas</li>
+                            <li>Uso excesivo de retroalimentación</li>
+                            <li>Uso inapropiado (como interrupciones)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Paralingüístico -->
+                <div id="paralinguistico" class="section-content">
+                    <h2>🎵 Componentes Paralingüísticos</h2>
+                    
+                    <div class="info-box blue">
+                        <strong>¿Qué son?</strong>
+                        <p>No tienen sentido por sí mismos, pero acompañan y modifican el significado del mensaje verbal. La misma frase dicha en diferentes tonos tendrá significados diferentes.</p>
+                    </div>
+
+                    <h3>⏸️ La Latencia</h3>
+                    <p>Intervalo de silencio entre el final de una oración y el inicio de otra.</p>
+                    <ul>
+                        <li><strong>Latencia larga:</strong> muestra conducta pasiva</li>
+                        <li><strong>Latencias muy cortas:</strong> se perciben como conducta agresiva</li>
+                    </ul>
+
+                    <h3>📢 El Volumen</h3>
+                    <div class="info-box green">
+                        <ul>
+                            <li><strong>Volumen bajo:</strong> indica sumisión o tristeza</li>
+                            <li><strong>Volumen alto:</strong> indica seguridad, dominio o persuasión</li>
+                            <li><strong>Volumen muy alto:</strong> indica agresividad</li>
+                        </ul>
+                    </div>
+
+                    <h3>🎶 El Timbre</h3>
+                    <p>Es la resonancia o calidad vocal de la voz.</p>
+                    <ul>
+                        <li><strong>Timbre plano:</strong> produce aburrimiento</li>
+                        <li><strong>Timbre gutural:</strong> da impresión de madurez</li>
+                    </ul>
+
+                    <h3>🎵 Tono e Inflexión</h3>
+                    <p>Comunican sentimientos y emociones. Sirven para indicar si se habla, afirma o pregunta.</p>
+
+                    <h3>🌊 Fluidez del Habla</h3>
+                    <p>Las perturbaciones excesivas causan inseguridad y poca competencia.</p>
+
+                    <h3>⚡ Velocidad</h3>
+                    <div class="info-box pink">
+                        <ul>
+                            <li><strong>Velocidad lenta:</strong> provoca aburrimiento</li>
+                            <li><strong>Velocidad rápida:</strong> da sensación de alegría</li>
+                            <li><strong>Velocidad excesiva:</strong> dificulta la comprensión</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Escucha Activa -->
+                <div id="escucha-activa" class="section-content">
+                    <h2>👂 Escucha Activa</h2>
+                    
+                    <div class="info-box blue">
+                        <strong>📌 Definición</strong>
+                        <p>La escucha activa es una habilidad social mediante la cual el que escucha presta atención a todos los detalles de la comunicación y trata de entender, de modo empático, las ideas y emociones que el interlocutor está expresando.</p>
+                    </div>
+
+                    <div class="info-box yellow">
+                        <strong>⚠️ Diferencia importante</strong>
+                        <p>Saber escuchar es una capacidad diferente de oír.</p>
+                    </div>
+
+                    <h3>💡 ¿Por qué es importante?</h3>
+                    <ul>
+                        <li>Garantiza el proceso de retroalimentación en la comunicación</li>
+                        <li>Permite al emisor cerciorarse de que su mensaje es comprendido</li>
+                        <li>Es imprescindible en la relación de ayuda con familias y colegas</li>
+                    </ul>
+
+                    <h3>✅ Conductas que Facilitan la Escucha Activa</h3>
+                    <div class="info-box green">
+                        <ol>
+                            <li><strong>Administrar el tiempo de habla</strong> - dar tiempo para que el otro se exprese</li>
+                            <li><strong>Demostrar empatía</strong> - ponerse en el lugar del otro</li>
+                            <li><strong>Parafrasear</strong> - repetir con las mismas o distintas palabras lo importante</li>
+                            <li><strong>Preguntar</strong> - preguntas para confirmar comprensión</li>
+                            <li><strong>Reformular</strong> - sacar conclusiones sobre aspectos parciales</li>
+                        </ol>
+                    </div>
+
+                    <h3>🚫 Barreras que Dificultan la Escucha Activa</h3>
+                    <div class="info-box pink">
+                        <ul>
+                            <li><strong>Identificación y comparación</strong> - contar la tuya interrumpiendo</li>
+                            <li><strong>Paternalismo</strong> - dar consejos sin que se pidan</li>
+                            <li><strong>Discrepancia impulsiva</strong> - buscar diferencias</li>
+                            <li><strong>Dogmatismo</strong> - falta de apertura</li>
+                            <li><strong>Lectura del pensamiento</strong> - adivinar qué piensa</li>
+                            <li><strong>Anticipación de respuesta</strong> - preparar tu contestación</li>
+                            <li><strong>Escucha selectiva</strong> - solo procesar lo que interesa</li>
+                            <li><strong>Prejuicio</strong> - rechazar por quién es</li>
+                            <li><strong>Ensoñación</strong> - mente en otro sitio</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Barreras -->
+                <div id="barreras" class="section-content">
+                    <h2>🚧 Barreras en la Comunicación</h2>
+                    
+                    <div class="info-box blue">
+                        <strong>¿Qué son las barreras?</strong>
+                        <p>Cuando iniciamos una interacción valoraremos la existencia de barreras y, en la medida de lo posible, intervendremos para eliminarlas o minimizar su efecto.</p>
+                    </div>
+
+                    <h3>📋 Tipos de Barreras</h3>
+                    
+                    <div class="info-box yellow">
+                        <strong>1. Semánticas</strong>
+                        <p>Malentendidos por desconocimiento del significado de palabras.</p>
+                        <p><strong>Solución:</strong> usar palabras apropiadas al objetivo e interlocutor.</p>
+                    </div>
+
+                    <div class="info-box pink">
+                        <strong>2. Psicológicas</strong>
+                        <p>Cada persona interpreta según experiencias previas, prejuicios, creencias. Introversión extrema o falta de habilidades es barrera.</p>
+                    </div>
+
+                    <div class="info-box blue">
+                        <strong>3. Fisiológicas</strong>
+                        <p>Dificultades sensoriales y físicas.</p>
+                    </div>
+
+                    <div class="info-box green">
+                        <strong>4. Físicas</strong>
+                        <p>Ruido e interferencias, exceso de estímulos (auditivos, visuales, olfativos, temperatura).</p>
+                    </div>
+
+                    <div class="info-box pink">
+                        <strong>5. Socioculturales</strong>
+                        <p>Distinta procedencia étnica, religión, nivel socio-económico, costumbres.</p>
+                    </div>
+
+                    <h3>🛠️ Estrategias de Resolución</h3>
+                    <ul>
+                        <li>Obtener información previa sobre características del grupo</li>
+                        <li>Observar la retroalimentación detectando malentendidos</li>
+                        <li>Apoyarse en rasgos comunes, no diferencias</li>
+                        <li>Tener en cuenta la diversidad como natural</li>
+                        <li>Distinguir entre lo tolerable e intolerable de conductas</li>
+                    </ul>
+                </div>
+
+                <!-- Inteligencia Emocional -->
+                <div id="inteligencia-emocional" class="section-content">
+                    <h2>❤️ Inteligencia Emocional</h2>
+                    
+                    <div class="info-box blue">
+                        <strong>¿Qué es la Inteligencia Emocional?</strong>
+                        <p>"Capacidad de reconocer nuestros propios sentimientos y los ajenos, de motivarnos y de manejar bien las emociones en nosotros mismos y en nuestras relaciones" - Daniel Goleman</p>
+                    </div>
+
+                    <h3>💭 Diferencia entre Sentimientos y Emociones</h3>
+                    <div class="info-box pink">
+                        <ul>
+                            <li><strong>Sentimientos:</strong> tendencias o estados de ánimo de baja intensidad y larga duración. Producen estados más o menos estables.</li>
+                            <li><strong>Emociones:</strong> impulsos o reacciones afectivas de mayor intensidad pero duración más corta. Provocadas por estímulos puntuales, son más controlables.</li>
+                        </ul>
+                    </div>
+
+                    <h3>🎯 Dos Aptitudes Principales</h3>
+                    
+                    <div class="info-box green">
+                        <strong>🧠 Aptitud Personal</strong>
+                        <ul>
+                            <li><strong>Autoconocimiento:</strong> conocer los propios sentimientos</li>
+                            <li><strong>Autorregulación:</strong> controlar emociones propias</li>
+                            <li><strong>Motivación:</strong> capacidad de motivarse</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box yellow">
+                        <strong>🤝 Aptitud Social</strong>
+                        <ul>
+                            <li><strong>Empatía:</strong> entender los sentimientos ajenos</li>
+                            <li><strong>Habilidades sociales:</strong> capacidad de relacionarse</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box blue">
+                        <strong>💡 Conclusión</strong>
+                        <p>La inteligencia emocional es una forma de interactuar con el entorno que engloba las habilidades sociales, autocontrol, autoconciencia y empatía.</p>
+                    </div>
+                </div>
+
+                <!-- Técnicas -->
+                <div id="tecnicas" class="section-content">
+                    <h2>🎯 Técnicas de Entrenamiento</h2>
+                    
+                    <div class="info-box green">
+                        <strong>¿Se pueden aprender las habilidades sociales?</strong>
+                        <p>✅ SÍ. Aunque algunas personas tienen habilidades más desarrolladas naturalmente, las habilidades sociales se aprenden y requieren entrenamiento.</p>
+                    </div>
+
+                    <div class="info-box blue">
+                        <strong>📖 Definición de Curran (1985)</strong>
+                        <p>"Un intento directo y sistemático de enseñar estrategias y habilidades interpersonales a los individuos con la intención de mejorar su competencia interpersonal".</p>
+                    </div>
+
+                    <h3>🎓 Aplicaciones del Entrenamiento</h3>
+                    <ul>
+                        <li>Problemas de conducta en infancia y adolescencia</li>
+                        <li>Edad adulta</li>
+                        <li>Contextos educativos</li>
+                        <li>Prevención de problemas en la interacción social</li>
+                        <li>Promoción de la competencia social</li>
+                    </ul>
+
+                    <h3>🛠️ Principales Técnicas</h3>
+                    
+                    <div class="info-box yellow">
+                        <strong>📝 1. Instrucciones</strong>
+                        <p>Explicaciones claras y precisas sobre conductas que deben ejecutarse.</p>
+                    </div>
+
+                    <div class="info-box pink">
+                        <strong>👥 2. Modelado</strong>
+                        <p>Exposición de un modelo que muestra la conducta correcta. Permite aprendizaje observacional.</p>
+                    </div>
+
+                    <div class="info-box green">
+                        <strong>🎭 3. Ensayo Conductual (Role Playing)</strong>
+                        <p>Representar situaciones de la vida real buscando respuestas adaptativas. Permite practicar las conductas.</p>
+                    </div>
+
+                    <div class="info-box blue">
+                        <strong>💬 4. Retroalimentación (Feedback)</strong>
+                        <p>Información tras realizar una conducta. Enfatiza lo positivo y sugiere mejoras.</p>
+                    </div>
+
+                    <div class="info-box yellow">
+                        <strong>🎯 5. Moldeado</strong>
+                        <p>Reforzar cada pequeño avance hacia el objetivo de conducta deseada.</p>
+                    </div>
+
+                    <div class="info-box green">
+                        <strong>🌟 6. Reforzamiento</strong>
+                        <p>Consecuencias positivas tras conducta adecuada. Tipos:</p>
+                        <ul>
+                            <li>Reforzadores materiales</li>
+                            <li>Reforzadores sociales (más útiles y naturales)</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>Habilidades Sociales y Comunicación</strong></p>
+            <p>Material educativo para el desarrollo personal y profesional</p>
+            <p>© 2025 - Recurso educativo</p>
+        </footer>
+    </div>
+
+    <script>
+        // Show specific section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+
+            // Update active button
+            const buttons = document.querySelectorAll('.nav-menu button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Close mobile menu if open
+            if (window.innerWidth <= 968) {
+                toggleMenu();
+            }
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (window.innerWidth <= 968) {
+                if (!sidebar.contains(event.target) && !menuToggle.contains(event.target) && sidebar.classList.contains('open')) {
+                    toggleMenu();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
